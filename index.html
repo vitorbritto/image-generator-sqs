@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Generator</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div x-data="init()" class="w-1/3 mx-auto py-10">
+      <h1 class="font-bold py-20 text-6xl">Image generator</h1>
+
+      <div class="py-10 text-xl font-semibold tracking-tighter text-gray-600">
+        <label>How many?</label>
+        <input x-model="quantity" class="border w-full p-3 mt-3" type="text" />
+
+        <button @click="requestImages()" class="border w-full p-3 mt-3">
+          Request image
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const init = () => {
+        return {
+          quantity: 0,
+          requestImages() {
+            const body = JSON.stringify({ quantity: this.quantity });
+
+            fetch("/request_images", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body,
+            });
+          },
+        };
+      };
+    </script>
+  </body>
+</html>
