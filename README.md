@@ -1,6 +1,6 @@
 # Image Generator
 
-This is a simple image generator, that uses SQS to generate images based on the quantity selected by the user.
+This is an experimental image generator that uses SQS to generate images based on the quantity selected by the user.
 
 ## Technologies
 
